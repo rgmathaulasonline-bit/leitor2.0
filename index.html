@@ -19,7 +19,7 @@ input,select{font:inherit;font-size:14px;background:var(--bg2);border:1px solid 
 input:focus,select:focus,button:focus-visible{border-color:var(--primary);box-shadow:0 0 0 3px rgba(79,124,255,.3)}
 label{display:block;font-size:12.5px;color:var(--muted);margin-bottom:6px;font-weight:600}
 .app{display:flex;min-height:100vh}
-.sidebar{width:250px;background:var(--bg2);border-right:1px solid var(--border);padding:20px 14px;position:fixed;height:100vh;overflow-y:auto;transition:transform .25s;z-index:100}
+.sidebar{width:250px;background:var(--bg2);border-right:1px solid var(--border);padding:20px 14px;position:fixed;top:0;left:0;height:auto;max-height:calc(100vh - 20px);overflow-y:auto;transition:transform .25s;z-index:100;border-radius:0 0 14px 0;box-shadow:0 8px 28px rgba(0,0,0,.35)}
 .logo{display:flex;align-items:center;gap:10px;padding:8px 10px 22px;font-size:19px;font-weight:800}
 .logo-mark{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--primary),var(--accent));display:grid;place-items:center}
 .nav-item{display:flex;align-items:center;gap:12px;padding:11px 14px;border-radius:11px;color:var(--muted);font-weight:600;cursor:pointer;margin-bottom:4px}
@@ -80,10 +80,149 @@ canvas.pv{max-width:100%;border-radius:12px;border:1px solid var(--border)}
   .sheetwrap svg{width:210mm!important;height:297mm!important}
   .sidebar,.topbar,.toast,.modal-bg,#view-cartoes > .card{display:none!important}
 }
+
+/* ============================================================
+   CABEÇALHO RG MATH (NÃO FIXO)
+   ============================================================ */
+.rg-header-container {
+    background: linear-gradient(135deg, #0F2B5C 0%, #1E4A8A 50%, #2D6FC4 100%);
+    padding: 20px 0 18px;
+    box-shadow: 0 4px 25px rgba(21, 56, 128, 0.5);
+    z-index: 1000;
+    width: 100%;
+}
+.rg-header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 20px;
+}
+.rg-logo {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid rgba(255, 215, 0, 0.7);
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: block;
+}
+.rg-logo:hover {
+    transform: scale(1.08) rotate(-4deg);
+    box-shadow: 0 0 45px rgba(255, 215, 0, 0.6);
+}
+.rg-header-title {
+    color: #FFE484;
+    font-size: 1.9rem;
+    font-weight: 800;
+    margin-top: 12px;
+    letter-spacing: 1px;
+    text-shadow: 0 2px 15px rgba(0, 0, 0, 0.4), 0 0 10px rgba(255, 215, 0, 0.3);
+    text-align: center;
+}
+@media (max-width: 768px) {
+    .rg-logo { width: 75px; height: 75px; }
+    .rg-header-title { font-size: 1.4rem; margin-top: 8px; }
+    .rg-header-container { padding: 14px 0 12px; }
+}
+@media (max-width: 480px) {
+    .rg-logo { width: 65px; height: 65px; }
+    .rg-header-title { font-size: 1.1rem; margin-top: 6px; }
+    .rg-header-container { padding: 10px 0 10px; }
+}
+
+/* ============================================================
+   RODAPÉ RG MATH
+   ============================================================ */
+.rg-footer-container {
+    background: linear-gradient(135deg, #0F2B5C 0%, #1E4A8A 50%, #2D6FC4 100%);
+    padding: 32px 20px 28px;
+    margin-top: 40px;
+    box-shadow: 0 -4px 30px rgba(21, 56, 128, 0.4);
+    border-top: 4px solid #F7C948;
+    width: 100%;
+}
+.rg-footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+}
+.rg-footer-text {
+    color: #FFE484;
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-align: center;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+.rg-instagram-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: linear-gradient(135deg, #F58529, #DD2A7B, #8134AF);
+    color: #ffffff;
+    padding: 14px 32px;
+    border-radius: 60px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.05rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 25px rgba(221, 42, 123, 0.4);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+.rg-instagram-btn:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 10px 40px rgba(221, 42, 123, 0.6);
+    background: linear-gradient(135deg, #F77A1A, #D1226E, #7029A8);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+@media (max-width: 600px) {
+    .rg-footer-text { font-size: 0.9rem; }
+    .rg-instagram-btn {
+        padding: 12px 24px;
+        font-size: 0.9rem;
+        gap: 10px;
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+    }
+    .rg-footer-container { padding: 20px 16px 18px; }
+}
+@media (min-width: 768px) {
+    .rg-footer-content { gap: 18px; }
+}
+
+/* Ajuste para o app não ficar atrás do cabeçalho */
+.app { flex-direction: column; }
+.app-inner { display: flex; width: 100%; }
 </style>
 </head>
 <body>
+
+<!-- ============================================================
+   CABEÇALHO RG MATH (NÃO FIXO - ROLA COM A PÁGINA)
+   ============================================================ -->
+<header class="rg-header-container no-print">
+    <div class="rg-header-content">
+        <img 
+            src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExa2N1cnJqbWFmb3llODF5cnl2emQzcWJhZmgzczVzYnp5cXZrbXpyciZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/V9ifAFkzIJPVk1dIxO/giphy.gif" 
+            alt="Logo RG Math" 
+            class="rg-logo"
+            loading="lazy"
+        >
+        <h1 class="rg-header-title">Professor Raylton Guedes</h1>
+    </div>
+</header>
+
 <div class="app">
+<div class="app-inner">
 <aside class="sidebar" id="sidebar"><div class="logo"><span class="logo-mark">◉</span> OMR Escolar</div><nav id="nav">
 <div class="nav-item active" data-view="dashboard">🏠 Painel</div><div class="nav-item" data-view="provas">📝 Provas</div><div class="nav-item" data-view="gabarito">✅ Gabarito</div><div class="nav-item" data-view="cartoes">🖨️ Gerar Cartões</div><div class="nav-item" data-view="leitor">📷 Leitor OMR</div><div class="nav-item" data-view="resultados">📊 Resultados</div><div class="nav-item" data-view="relatorios">📈 Relatórios</div><div class="nav-item" data-view="dados">💾 Dados / Backup</div>
 </nav></aside>
@@ -152,7 +291,28 @@ canvas.pv{max-width:100%;border-radius:12px;border:1px solid var(--border)}
 <section class="view" id="view-relatorios"><div class="card"><div class="row"><div><label>Prova</label><select id="relProvaSelect" onchange="App.gerarRelatorios()"></select></div></div><div id="relConteudo"></div></div></section>
 
 <section class="view" id="view-dados"><div class="card"><h2>Backup e Restauração</h2><p style="color:var(--muted);font-size:13.5px">Exporte todos os dados em JSON ou restaure um backup. <b>Recomendado:</b> faça backup após cada sessão de correções.</p><div class="hero-actions"><button class="btn-primary" onclick="App.exportarBackup()">💾 Exportar Backup</button><button class="btn-ghost" onclick="document.getElementById('backupInput').click()">📥 Importar Backup</button><input type="file" id="backupInput" accept="application/json" style="display:none" onchange="App.importarBackup(event)"></div></div><div class="card" style="margin-top:18px"><h2>Zona de Perigo</h2><p style="color:var(--muted);font-size:13.5px;margin-bottom:14px">Remove todas as provas, gabaritos e resultados deste navegador.</p><button class="btn-danger" onclick="App.resetarTudo()">🗑️ Apagar Todos os Dados</button></div></section>
-</main></div>
+</main>
+</div>
+</div>
+
+<!-- ============================================================
+   RODAPÉ RG MATH
+   ============================================================ -->
+<footer class="rg-footer-container no-print">
+    <div class="rg-footer-content">
+        <span class="rg-footer-text">© 2025 RG Math - Professor Raylton Guedes</span>
+        <a 
+            href="https://www.instagram.com/rgmath_education/" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="rg-instagram-btn"
+            aria-label="Acompanhe o RG Math no Instagram"
+        >
+            📷 Acompanhe o RG Math no Instagram @rgmath_education
+        </a>
+    </div>
+</footer>
+
 <div class="modal-bg" id="modalBg"><div class="modal" id="modalContent"></div></div>
 <div class="toast" id="toast"></div>
 <script>
